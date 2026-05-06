@@ -1,0 +1,48 @@
+#include <iostream>
+
+using namespace std;
+
+struct Term 
+{
+    int Coeff;
+    int Exp;
+};
+
+struct Poly
+{
+    int n;
+    struct Term *t;
+};
+
+void Create(struct Poly *p)
+{
+    int i;
+    cout<<"Number of term?";
+    cin>>p->n;
+    p->t = new Term[p->n];
+    cout<<"Enter terms"<<endl;
+    for(i=0; i<p->n; i++)
+    {
+        cin>>p->t[i].Coeff>>p->t[i].Exp;
+    }
+    
+}
+
+void Display(struct Poly p)
+{
+    int i;
+    for(i=0; i<p.n; i++)
+    {
+        cout<<p.t[i].Coeff<<"x"<<p.t[i].Exp<<"+";
+    }
+    cout<<endl;
+}
+
+int main()
+{
+    struct Poly p1;
+    Create(&p1);
+    Display(p1);
+
+    return 0;
+}
